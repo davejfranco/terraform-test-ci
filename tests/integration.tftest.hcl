@@ -1,3 +1,26 @@
+provider "aws" {
+  region                      = "eu-west-1"
+  access_key                  = "fake"
+  secret_key                  = "fake"
+  skip_credentials_validation = true
+  skip_metadata_api_check     = true
+  skip_requesting_account_id  = true
+
+  endpoints {
+    ec2             = "http://localhost:4566"
+    route53         = "http://localhost:4566"
+    route53resolver = "http://localhost:4566"
+    s3              = "http://s3.localhost.localstack.cloud:4566"
+    s3control       = "http://localhost:4566"
+    iam             = "http://localhost:4566"
+  }
+  default_tags {
+    tags = {
+      Environment = "Local"
+      Service     = "LocalStack"
+    }
+  }
+}
 variables {
 
   name = "daveops-test-youtube-stream"
